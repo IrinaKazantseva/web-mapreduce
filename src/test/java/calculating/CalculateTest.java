@@ -48,12 +48,25 @@ public class CalculateTest {
         double y = 0.2;
         double t = 0.915;
         int k=5;
-        double res_1 = -0.347558*(-2/Math.PI);
+        double res_1 = -0.338025*(-2/Math.PI);
 
         Calculate calculate = new Calculate();
-        double res_2 = calculate.calculateSumOfIntegralRepresentationOfFunction(Integer.MAX_VALUE, k, y,t);
-        assertTrue("Results are equal", Math.rint(10000.0 * res_1) / 10000.0 == Math.rint(10000.0 * res_2) / 10000.0);
+        double res_2 = calculate.calculateSumOfIntegralRepresentationOfFunction(2000, k, y,t);
+        assertTrue("Results are equal", Math.rint(100.0 * res_1) / 100.0 == Math.rint(100.0 * res_2) / 100.0);
     }
+
+    @Test
+    public void testCalculateSumOfIntegralRepresentationOfFunctionParallel(){
+        double y = 0.2;
+        double t = 0.915;
+        int k=5;
+        double res_1 = -0.338025*(-2/Math.PI);
+        Calculate calculate = new Calculate();
+        double res_2 = calculate.calculateSumOfIntegralRepresentationOfFunction(2000, k, y,t);
+        assertTrue("Results are equal", Math.rint(100.0 * res_1) / 100.0 == Math.rint(100.0 * res_2) / 100.0);
+    }
+
+
 
 
 

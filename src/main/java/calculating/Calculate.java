@@ -3,8 +3,11 @@ package calculating;
 import model.ItemOfAnalyticalRepresentationOfFunction;
 import model.ItemOfIntegralRepresentationOfFunction;
 import model.ItemOfRecursionRepresentationOfFunction;
+import model.Type;
 import org.apache.commons.math3.analysis.integration.SimpsonIntegrator;
 import org.apache.commons.math3.analysis.*;
+import org.apache.commons.math3.analysis.integration.TrapezoidIntegrator;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -32,18 +35,26 @@ public class Calculate {
     }
 
     public double calculateSumOfIntegralRepresentationOfFunction(int n, int k, double y, double t){
-        SimpsonIntegrator integrator = new SimpsonIntegrator();
-        ItemOfIntegralRepresentationOfFunction itemOfIntegralRepresentationOfFunction = new ItemOfIntegralRepresentationOfFunction(k, t, y);
-        return integrator.integrate(n, itemOfIntegralRepresentationOfFunction, 0.0, Math.PI/2)*2* Math.pow(-1, k)/Math.PI;
+        List<ItemOfIntegralRepresentationOfFunction> items = new ArrayList<ItemOfIntegralRepresentationOfFunction>();
+        items.add(new ItemOfIntegralRepresentationOfFunction(k, 0, t, y, Type.FIRST));
+        items.add(new ItemOfIntegralRepresentationOfFunction(k, Math.PI/2, t, y,Type.LAST));
+        for(int i=1; i<n; i++){
+            items.add(new ItemOfIntegralRepresentationOfFunction(k, i*(Math.PI/(2*n)), t, y,Type.MIDDLE ));
+        }
+        DoubleSummaryStatistics c = items.stream().peek(i-> i.calculateCurrentItem()).collect(Collectors.summarizingDouble((i)-> ((ItemOfIntegralRepresentationOfFunction)i).getCalc()));
+        return c.getSum() * (Math.PI/(2*n)) *2* (Math.pow(-1, k)/Math.PI) ;
+
     }
 
-    public double calculateSumOfIntegralRepresentationOfFunctionParallel(int k, double y, double t){
+    public double calculateSumOfIntegralRepresentationOfFunctionParallel(int n, int k, double y, double t){
         List<ItemOfIntegralRepresentationOfFunction> items = new ArrayList<ItemOfIntegralRepresentationOfFunction>();
-        items.add(new ItemOfIntegralRepresentationOfFunction(k, 0, t, y,1));
-        items.add(new ItemOfIntegralRepresentationOfFunction(k, Math.PI/2, t, y,3));
-        items.add(new ItemOfIntegralRepresentationOfFunction(k, Math.PI/4, t, y,2));
-        DoubleSummaryStatistics c =items.parallelStream().peek((i)-> i.calculateCurrentItem()).collect(Collectors.summarizingDouble((i)-> ((ItemOfIntegralRepresentationOfFunction)i).getCalc()));
-        return c.getSum()*Math.PI/12*2* Math.pow(-1, k)/Math.PI;
+        items.add(new ItemOfIntegralRepresentationOfFunction(k, 0, t, y, Type.FIRST));
+        items.add(new ItemOfIntegralRepresentationOfFunction(k, Math.PI/2, t, y,Type.LAST));
+        for(int i=1; i<n; i++){
+            items.add(new ItemOfIntegralRepresentationOfFunction(k, i*(Math.PI/(2*n)), t, y,Type.MIDDLE ));
+        }
+        DoubleSummaryStatistics c = items.parallelStream().peek(i-> i.calculateCurrentItem()).collect(Collectors.summarizingDouble((i)-> ((ItemOfIntegralRepresentationOfFunction)i).getCalc()));
+        return c.getSum() * (Math.PI/(2*n)) *2* (Math.pow(-1, k)/Math.PI) ;
     }
 
 

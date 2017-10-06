@@ -1,17 +1,16 @@
 package model;
 
-import org.apache.commons.math3.analysis.UnivariateFunction;
-import org.apache.commons.math3.util.CombinatoricsUtils;
-
 /**
  * Created by Irina Kazantseva on 04.10.2017.
  */
-public class ItemOfIntegralRepresentationOfFunction implements UnivariateFunction {
+public class ItemOfIntegralRepresentationOfFunction{
     private int k;
     private double p; //угол фи
     private double t;
     private double y;
     private int number;
+    private Type type;
+
     private double calc;
 
     public int getNumber() {
@@ -75,15 +74,37 @@ public class ItemOfIntegralRepresentationOfFunction implements UnivariateFunctio
         this.y = y;
     }
 
+    public ItemOfIntegralRepresentationOfFunction(int k, double p, double t, double y, Type type) {
+        this.k = k;
+        this.p = p;
+        this.t = t;
+        this.y = y;
+        this.type = type;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public void calculateCurrentItem(){
         calc =  (Math.cos((2*k+1)*p)/Math.cos(p))*Math.cos((t*y/2)*Math.tan(p));
-        if(number == 2){
-            calc = 4*calc;
+        switch (type){
+            case LAST: {
+                calc = calc / 2;
+                break;
+            }
+            case FIRST: {
+                calc = calc / 2;
+                break;
+            }
+            default:{
+                break;
+            }
         }
     }
 
-    @Override
-    public double value(double v) {
-        return (Math.cos((2*k+1)*v)/Math.cos(v))*Math.cos((t*y/2)*Math.tan(v));
-    }
-}
+   }
