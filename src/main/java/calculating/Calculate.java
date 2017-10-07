@@ -60,29 +60,33 @@ public class Calculate {
 
     public double calculateSumOfRecursionRepresentationOfFunction(int k, double y, double t){
 
-        Map<Integer, List<ItemOfAnalyticalRepresentationOfFunction>> listMap = new HashMap<>();
-        ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_0 = new ItemOfAnalyticalRepresentationOfFunction(0, 0, t, y);
-        itemOfAnalyticalRepresentationOfFunction_0.calculateCurrentItem();
-        ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_1_0 = new ItemOfAnalyticalRepresentationOfFunction(1,0,t,y);
-        itemOfAnalyticalRepresentationOfFunction_1_0.calculateCurrentItem();
-        ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_1_1 = new ItemOfAnalyticalRepresentationOfFunction(1,1,t,y);
-        itemOfAnalyticalRepresentationOfFunction_1_1.calculateCurrentItem();
-        Double item_1 = itemOfAnalyticalRepresentationOfFunction_1_0.getCalc() + itemOfAnalyticalRepresentationOfFunction_1_1.getCalc();
-        itemOfAnalyticalRepresentationOfFunction_1_1.setCalc(item_1);
-        Double item_0 = itemOfAnalyticalRepresentationOfFunction_0.getCalc();
+        if(k>1) {
+            Map<Integer, List<ItemOfAnalyticalRepresentationOfFunction>> listMap = new HashMap<>();
+            ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_0 = new ItemOfAnalyticalRepresentationOfFunction(0, 0, t, y);
+            itemOfAnalyticalRepresentationOfFunction_0.calculateCurrentItem();
+            ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_1_0 = new ItemOfAnalyticalRepresentationOfFunction(1, 0, t, y);
+            itemOfAnalyticalRepresentationOfFunction_1_0.calculateCurrentItem();
+            ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_1_1 = new ItemOfAnalyticalRepresentationOfFunction(1, 1, t, y);
+            itemOfAnalyticalRepresentationOfFunction_1_1.calculateCurrentItem();
+            Double item_1 = itemOfAnalyticalRepresentationOfFunction_1_0.getCalc() + itemOfAnalyticalRepresentationOfFunction_1_1.getCalc();
+            itemOfAnalyticalRepresentationOfFunction_1_1.setCalc(item_1);
+            Double item_0 = itemOfAnalyticalRepresentationOfFunction_0.getCalc();
 
-        List<ItemOfRecursionRepresentationOfFunction> list = new ArrayList<>();
-        list.add(new ItemOfRecursionRepresentationOfFunction(itemOfAnalyticalRepresentationOfFunction_0, itemOfAnalyticalRepresentationOfFunction_1_1,
-                null, null,t,y, k, 0));
-        list.add(new ItemOfRecursionRepresentationOfFunction(null, itemOfAnalyticalRepresentationOfFunction_1_1,
-                list.get(0), null,t,y, k, 1));
+            List<ItemOfRecursionRepresentationOfFunction> list = new ArrayList<>();
+            list.add(new ItemOfRecursionRepresentationOfFunction(itemOfAnalyticalRepresentationOfFunction_1_1, itemOfAnalyticalRepresentationOfFunction_0,
+                    null, null, t, y, k, 0));
+            list.add(new ItemOfRecursionRepresentationOfFunction(null, itemOfAnalyticalRepresentationOfFunction_1_1,
+                    list.get(0), null, t, y, k, 1));
 
-        for (int i=2; i<k; i++){
-            ItemOfRecursionRepresentationOfFunction itemOfRecursionRepresentationFunction  = new ItemOfRecursionRepresentationOfFunction(null, null,
-                    list.get(i-2), list.get(i-1), t,y,k, i);
-            list.add(itemOfRecursionRepresentationFunction);
+            for (int i = 2; i < k; i++) {
+                ItemOfRecursionRepresentationOfFunction itemOfRecursionRepresentationFunction = new ItemOfRecursionRepresentationOfFunction(null, null,
+                         list.get(i - 1),list.get(i - 2), t, y, k, i);
+                list.add(itemOfRecursionRepresentationFunction);
+            }
+            list = list.stream().peek((i) -> i.calc()).collect(Collectors.toList());
+            return list.get(list.size()-1).getCalc();
+        }else{
+            return 0.0;
         }
-        DoubleSummaryStatistics c = list.stream().peek((i)->i.calc()).collect(Collectors.summarizingDouble((i)-> ((ItemOfRecursionRepresentationOfFunction)i).getCalc()));
-        return c.getSum();
     }
 }

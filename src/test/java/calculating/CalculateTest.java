@@ -67,8 +67,21 @@ public class CalculateTest {
     }
 
 
+    @Test
+    public void testCalculateSumOfRecursionRepresentationOfFunction() {
+        double y = 0.2;
+        double t = 0.915;
+        int k=2;
+        Calculate calculate = new Calculate();
 
+        double item_1 = calculate.calculateSumOfAnalyticalRepresentationOfFunction(0, y, t);
+        double item_2 = calculate.calculateSumOfAnalyticalRepresentationOfFunction(1, y, t);
+        double res_1 = ((2*k-1-y*t)/k)*item_2 - ((k-1)/k)*item_1;
+        double res_1_1 =  ((2*k-1-y*t)/k)*res_1 - ((k-1)/k)*item_2;
 
+        double res_2 = calculate.calculateSumOfRecursionRepresentationOfFunction(k, y, t);
+        assertTrue("Results are equal", Math.rint(100.0 * res_1) / 100.0 == Math.rint(100.0 * res_2) / 100.0);
 
+    }
 
 }
