@@ -7,6 +7,7 @@ import model.Type;
 import org.apache.commons.math3.analysis.integration.SimpsonIntegrator;
 import org.apache.commons.math3.analysis.*;
 import org.apache.commons.math3.analysis.integration.TrapezoidIntegrator;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,7 +15,10 @@ import java.util.stream.Collectors;
 /**
  * Created by Irina Kazantseva on 28.09.2017.
  */
+@Component
 public class Calculate {
+
+    public Calculate(){}
 
     public double calculateSumOfAnalyticalRepresentationOfFunctionParallel(int n, double y, double t){
         List<ItemOfAnalyticalRepresentationOfFunction> items = new ArrayList<ItemOfAnalyticalRepresentationOfFunction>();
@@ -61,7 +65,6 @@ public class Calculate {
     public double calculateSumOfRecursionRepresentationOfFunction(int k, double y, double t){
 
         if(k>1) {
-            Map<Integer, List<ItemOfAnalyticalRepresentationOfFunction>> listMap = new HashMap<>();
             ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_0 = new ItemOfAnalyticalRepresentationOfFunction(0, 0, t, y);
             itemOfAnalyticalRepresentationOfFunction_0.calculateCurrentItem();
             ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_1_0 = new ItemOfAnalyticalRepresentationOfFunction(1, 0, t, y);
