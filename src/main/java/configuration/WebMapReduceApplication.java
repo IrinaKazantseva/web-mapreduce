@@ -18,10 +18,6 @@ public class WebMapReduceApplication {
     private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(WebMapReduceApplication.class);
 
     public static void main(String[] args) throws Exception {
-        //log.debug("Application start successfully");
-      /*  Calculate calculate = new Calculate();
-        calculate.calculateSumOfRecursionRepresentationOfFunction(20, 0.5, 0.4);
-*/
        SpringApplication.run(WebMapReduceApplication.class, args);
     }
 
