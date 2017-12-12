@@ -1,0 +1,78 @@
+<div class="site-wrapper-inner" id="wrapper">
+    <div class="cover-container">
+        <div class="masthead clearfix">
+            <div class="inner">
+                <h3 class="masthead-brand">
+                    Вид расчета
+                </h3>
+                <ul class="nav masthead-nav">
+                    <li ng-class="{'active': active == 'stress'}" ng-click="setActive('stress')"><a>Нагрузочный</a>
+                    </li>
+                    <li ng-class="{'active': active == 'simple'}" ng-click="setActive('simple')"><a>Единичный</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="inner cover">
+            <div class="lead">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-8">
+                        <p class="cover-heading" style="float: left">
+                            Выберите тип функции:
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="btn-group" style="float: right">
+                            <button type="button" class="btn btn-default">{{calculationActiveType.name}}</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="type in calculationTypes"><a ng-click="changeCalculationType(type)">{{type.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 20px;" ng-show="calculationActiveType.id != 0">
+                    <div class="col-md-8">
+                        <p class="cover-heading" style="float: left">
+                            Выберите тип вычисления:
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="btn-group" style="float: right">
+                            <button type="button" class="btn btn-default">{{activeFunction.name}}</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="function in functions"><a ng-click="changeFunctionType(function)">{{function.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lead" ng-show="active == 'stress' && activeFunction.id != 0">
+                <ng-include src="'modules/calculate/templates/parallel-calculate.html'"></ng-include>
+            </div>
+
+            <div class="lead" ng-show="active == 'simple' && activeFunction.id != 0">
+                <ng-include src="'modules/calculate/templates/consistent-calculate.html'"></ng-include>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;" ng-show="calculationActiveType.id != 0">
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-4">
+                     <button type="button" class="btn btn-default" style="float: right;">Посчитать!</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
