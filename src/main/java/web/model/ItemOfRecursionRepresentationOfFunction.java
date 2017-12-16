@@ -1,6 +1,5 @@
-package model;
+package web.model;
 
-import configuration.WebMapReduceApplication;
 import org.apache.log4j.Logger;
 
 /**
@@ -34,7 +33,7 @@ public class ItemOfRecursionRepresentationOfFunction {
         this.k = k;
     }
 
-    public ItemOfRecursionRepresentationOfFunction(ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_k_1, ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_k_2, ItemOfRecursionRepresentationOfFunction itemOfRecursionRepresentationOfFunction_k_1, ItemOfRecursionRepresentationOfFunction itemOfRecursionRepresentationOfFunction_k_2,  double t, double y, int k,int number) {
+    public ItemOfRecursionRepresentationOfFunction(ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_k_1, ItemOfAnalyticalRepresentationOfFunction itemOfAnalyticalRepresentationOfFunction_k_2, ItemOfRecursionRepresentationOfFunction itemOfRecursionRepresentationOfFunction_k_1, ItemOfRecursionRepresentationOfFunction itemOfRecursionRepresentationOfFunction_k_2, double t, double y, int k, int number) {
         this.itemOfAnalyticalRepresentationOfFunction_k_1 = itemOfAnalyticalRepresentationOfFunction_k_1;
         this.itemOfAnalyticalRepresentationOfFunction_k_2 = itemOfAnalyticalRepresentationOfFunction_k_2;
         this.itemOfRecursionRepresentationOfFunction_k_1 = itemOfRecursionRepresentationOfFunction_k_1;
@@ -113,20 +112,20 @@ public class ItemOfRecursionRepresentationOfFunction {
         this.calc = calc;
     }
 
-    public void calc(){
-        log.debug("Calculating item with number - "+number);
-        if(itemOfRecursionRepresentationOfFunction_k_1== null && itemOfRecursionRepresentationOfFunction_k_2== null &&
-                itemOfAnalyticalRepresentationOfFunction_k_1 != null && itemOfAnalyticalRepresentationOfFunction_k_2 !=null){
-            calc = ((2*k-1-y*t)/k)* itemOfAnalyticalRepresentationOfFunction_k_1.getCalc() - ((k-1)/k)* itemOfAnalyticalRepresentationOfFunction_k_2.getCalc();
-        }else{
-            if(itemOfRecursionRepresentationOfFunction_k_2== null &&
-                    itemOfRecursionRepresentationOfFunction_k_1!= null && itemOfAnalyticalRepresentationOfFunction_k_2 != null &&
-                    itemOfAnalyticalRepresentationOfFunction_k_1 == null){
-                calc = ((2*k-1-y*t)/k)* itemOfRecursionRepresentationOfFunction_k_1.getCalc()  - ((k-1)/k)* itemOfAnalyticalRepresentationOfFunction_k_2.getCalc();
-            }else{
-                if(itemOfRecursionRepresentationOfFunction_k_1!= null && itemOfRecursionRepresentationOfFunction_k_2!= null &&
-                        itemOfAnalyticalRepresentationOfFunction_k_1 == null && itemOfAnalyticalRepresentationOfFunction_k_2 ==null){
-                    calc = ((2*k-1-y*t)/k)* itemOfRecursionRepresentationOfFunction_k_1.getCalc() - ((k-1)/k)* itemOfRecursionRepresentationOfFunction_k_2.getCalc();
+    public void calc() {
+        log.debug("Calculating item with number - " + number);
+        if (itemOfRecursionRepresentationOfFunction_k_1 == null && itemOfRecursionRepresentationOfFunction_k_2 == null &&
+                itemOfAnalyticalRepresentationOfFunction_k_1 != null && itemOfAnalyticalRepresentationOfFunction_k_2 != null) {
+            calc = ((2 * k - 1 - y * t) / k) * itemOfAnalyticalRepresentationOfFunction_k_1.getCalc() - ((k - 1) / k) * itemOfAnalyticalRepresentationOfFunction_k_2.getCalc();
+        } else {
+            if (itemOfRecursionRepresentationOfFunction_k_2 == null &&
+                    itemOfRecursionRepresentationOfFunction_k_1 != null && itemOfAnalyticalRepresentationOfFunction_k_2 != null &&
+                    itemOfAnalyticalRepresentationOfFunction_k_1 == null) {
+                calc = ((2 * k - 1 - y * t) / k) * itemOfRecursionRepresentationOfFunction_k_1.getCalc() - ((k - 1) / k) * itemOfAnalyticalRepresentationOfFunction_k_2.getCalc();
+            } else {
+                if (itemOfRecursionRepresentationOfFunction_k_1 != null && itemOfRecursionRepresentationOfFunction_k_2 != null &&
+                        itemOfAnalyticalRepresentationOfFunction_k_1 == null && itemOfAnalyticalRepresentationOfFunction_k_2 == null) {
+                    calc = ((2 * k - 1 - y * t) / k) * itemOfRecursionRepresentationOfFunction_k_1.getCalc() - ((k - 1) / k) * itemOfRecursionRepresentationOfFunction_k_2.getCalc();
                 }
             }
         }

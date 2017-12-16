@@ -1,5 +1,5 @@
-<form>
-    <div class="row" style="margin-bottom: 20px;" ng-show="activeFunction.id == 1">
+<div ng-form="simpleForm">
+    <div class="row" style="margin-bottom: 20px;">
         <div class="col-lg-8">
             <p class="cover-heading" style="float: left">
                 Введите Y:
@@ -8,7 +8,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">Y:</span>
-                <input type="text" class="form-control">
+                <input no-comma type="number"name="simple.y" ng-model="simple.y" class="form-control" ng-required="activeFunction.id == 1">
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">N:</span>
-                <input type="text" class="form-control">
+                <input no-comma type="number" no-float name="simple.n" ng-model="simple.n" class="form-control" ng-required="activeFunction.id !== 3">
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">T:</span>
-                <input type="text" class="form-control">
+                <input no-comma type="number" name="simple.t" ng-model="simple.t" class="form-control" ng-required="true">
             </div>
         </div>
     </div>
@@ -50,8 +50,8 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">K:</span>
-                <input type="text" class="form-control">
+                <input no-comma type="number" no-float name="simple.k" ng-model="simple.k" class="form-control" ng-required="activeFunction.id !== 1">
             </div>
         </div>
     </div>
-</form>
+</div>

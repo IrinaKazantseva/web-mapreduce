@@ -1,4 +1,4 @@
-package model;
+package web.model;
 
 /**
  * Created by Irina Kazantseva on 07.10.2017.
@@ -17,7 +17,7 @@ public class StressRequestDto {
     private int kMax;
     private int kStep;
     private boolean isParallel;
-
+    public StressRequestDto(){}
     public StressRequestDto(int nMin, int nMax, int nStep, double yMin, double yMax, double yStep, double tMin, double tMax, double tStep, int kMin, int kMax, int kStep, boolean isParallel) {
         this.nMin = nMin;
         this.nMax = nMax;

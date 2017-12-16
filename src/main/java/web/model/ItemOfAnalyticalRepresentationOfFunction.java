@@ -1,4 +1,4 @@
-package model;
+package  web.model;
 
 import org.apache.commons.math3.util.CombinatoricsUtils;
 

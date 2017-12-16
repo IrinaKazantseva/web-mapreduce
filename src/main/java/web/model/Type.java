@@ -1,4 +1,4 @@
-package model;
+package web.model;
 
 /**
  * Created by Irina Kazantseva on 06.10.2017.

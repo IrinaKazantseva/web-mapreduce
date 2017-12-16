@@ -1,4 +1,4 @@
-package model;
+package web.model;
 
 /**
  * Created by Irina Kazantseva on 07.10.2017.
@@ -8,22 +8,22 @@ public class RequestDto {
     private int k;
     private double y;
     private double t;
-    private boolean isParallel;
-
+    private boolean parallel;
+    public RequestDto(){}
     public RequestDto(int n, int k, double y, double t, boolean isParallel) {
         this.n = n;
         this.k = k;
         this.y = y;
         this.t = t;
-        this.isParallel = isParallel;
+        this.parallel = isParallel;
     }
 
     public boolean isParallel() {
-        return isParallel;
+        return parallel;
     }
 
     public void setParallel(boolean parallel) {
-        isParallel = parallel;
+        this.parallel = parallel;
     }
 
     public int getN() {

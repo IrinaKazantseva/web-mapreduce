@@ -1,0 +1,85 @@
+<div ng-form="stressForm">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Min(Y):</span>
+                <input no-comma type="number" class="form-control" name="stress.yMin" ng-model="stress.yMin" title="Минимальное значение Y" ng-required="activeFunction.id == 1">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Max(Y):</span>
+                <input no-comma type="number" class="form-control" name="stress.yMax" ng-model="stress.yMax" title="Максимальное значение Y" ng-required="activeFunction.id == 1">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Шаг:</span>
+                <input no-comma type="number" class="form-control" name="stress.yStep" ng-model="stress.yStep" title="Шаг" ng-required="activeFunction.id == 1">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;" ng-hide="activeFunction.id == 3">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Min(N):</span>
+                <input no-comma type="number" no-float class="form-control" name="stress.nMin" ng-model="stress.nMin" title="Минимальное значение N" ng-required="activeFunction.id !== 3">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Max(N):</span>
+                <input no-comma type="number" no-float class="form-control" name="stress.nMax" ng-model="stress.nMax" title="Максимальное значение N" ng-required="activeFunction.id !== 3">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Шаг:</span>
+                <input no-comma type="number" no-float class="form-control" name="stress.nStep" ng-model="stress.nStep" title="Шаг" ng-required="activeFunction.id !== 3">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Min(T):</span>
+                <input no-comma type="number" class="form-control" name="stress.tMin" ng-model="stress.tMin" title="Минимальное значение T" ng-required="true">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Max(T):</span>
+                <input no-comma type="number" class="form-control" name="stress.tMax" ng-model="stress.tMax" title="Максимальное значение T" ng-required="true">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Шаг:</span>
+                <input no-comma type="number" class="form-control" name="stress.tStep" ng-model="stress.tStep" title="Шаг" ng-required="true">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;" ng-hide="activeFunction.id == 1">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Min(K):</span>
+                <input no-comma type="number" no-float class="form-control" name="stress.kMin" ng-model="stress.kMin" title="Минимальное значение K" ng-required="activeFunction.id !== 1">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Max(K):</span>
+                <input no-comma type="number" no-float class="form-control" name="stress.kMax" ng-model="stress.kMax" title="Максимальное значение K" ng-required="activeFunction.id !== 1">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Шаг:</span>
+                <input no-comma type="number" no-float class="form-control" name="stress.kStep" ng-model="stress.kStep" title="Шаг" ng-required="activeFunction.id !== 1">
+            </div>
+        </div>
+    </div>
+</div>

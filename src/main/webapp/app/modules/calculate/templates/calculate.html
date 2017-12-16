@@ -57,22 +57,38 @@
             </div>
 
             <div class="lead" ng-show="active == 'stress' && activeFunction.id != 0">
-                <ng-include src="'modules/calculate/templates/parallel-calculate.html'"></ng-include>
+                <ng-include src="'modules/calculate/templates/stress-calculate.html'"></ng-include>
             </div>
 
             <div class="lead" ng-show="active == 'simple' && activeFunction.id != 0">
-                <ng-include src="'modules/calculate/templates/consistent-calculate.html'"></ng-include>
+                <ng-include src="'modules/calculate/templates/simple-calculate.html'"></ng-include>
             </div>
-
             <div class="row" style="margin-bottom: 20px;" ng-show="calculationActiveType.id != 0">
                 <div class="col-md-8">
                 </div>
                 <div class="col-md-4">
-                     <button type="button" class="btn btn-default" style="float: right;">Посчитать!</button>
+                    <button type="button" class="btn btn-default" style="float: right;" ng-click="getResult()"
+                            ng-disabled="stressForm.$invalid && !stressForm.$dirty  || simpleForm.$invalid && !simpleForm.$dirty ">
+                        Посчитать!
+                    </button>
                 </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;" ng-show="resultTime != null">
+                <div class="col-md-8">
+                    <p class="cover-heading" style="float: left">
+                        Результат:
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p class="cover-heading">
+                        {{resultTime}}
+                    </p>
                 </div>
             </div>
         </div>
 
     </div>
+
+
 </div>
