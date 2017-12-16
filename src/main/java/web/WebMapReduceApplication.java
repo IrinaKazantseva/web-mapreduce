@@ -11,8 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages="web")
 public class WebMapReduceApplication {
 
-    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(WebMapReduceApplication.class);
-
     public static void main(String[] args) throws Exception {
         SpringApplication.run(WebMapReduceApplication.class, args);
     }
