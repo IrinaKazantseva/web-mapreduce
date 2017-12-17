@@ -15,7 +15,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">Шаг:</span>
-                <input no-comma type="number" class="form-control" name="stress.yStep" ng-model="stress.yStep" title="Шаг" ng-required="activeFunction.id == 1">
+                <input no-comma type="number" class="form-control" name="stress.yStep" ng-model="stress.yStep" title="Шаг" ng-required="activeFunction.id == 1" min="0">
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">Шаг:</span>
-                <input no-comma type="number" no-float class="form-control" name="stress.nStep" ng-model="stress.nStep" title="Шаг" ng-required="activeFunction.id !== 3">
+                <input no-comma type="number" no-float class="form-control" name="stress.nStep" ng-model="stress.nStep" title="Шаг" ng-required="activeFunction.id !== 3" min="0">
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">Шаг:</span>
-                <input no-comma type="number" class="form-control" name="stress.tStep" ng-model="stress.tStep" title="Шаг" ng-required="true">
+                <input no-comma type="number" class="form-control" name="stress.tStep" ng-model="stress.tStep" title="Шаг" ng-required="true" min="0">
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
         <div class="col-lg-4">
             <div class="input-group">
                 <span class="input-group-addon">Шаг:</span>
-                <input no-comma type="number" no-float class="form-control" name="stress.kStep" ng-model="stress.kStep" title="Шаг" ng-required="activeFunction.id !== 1">
+                <input no-comma type="number" no-float class="form-control" name="stress.kStep" ng-model="stress.kStep" title="Шаг" ng-required="activeFunction.id !== 1" min="0">
             </div>
         </div>
     </div>
